@@ -1,12 +1,23 @@
 .home {
-  background-image: url("../../../public/images/hero.png");
   height: 100vh;
-  background-position: center;
-  background-size: cover;
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    img {
+      width: 100%;
+      display: block;
+      height: 100vh !important;
+      object-fit: cover;
+    }
+  }
 
   .hero-caption {
     margin-top: 60px;
     padding: 0 15px;
+
     h2 {
       font-size: 60px;
       font-family: "Oswald", sans-serif;
@@ -75,17 +86,18 @@
 }
 
 .all-about {
-  margin: 0 auto !important;
   .all-flex {
     display: flex;
     align-items: center;
     @media (max-width: 991px) {
-flex-direction: column;      }
+      flex-direction: column;
+    }
     .left {
       background-color: $orange;
       width: 50%;
       @media (max-width: 991px) {
-width: 100%;      }
+        width: 100%;
+      }
       display: flex;
       align-items: center;
       position: relative;
@@ -105,21 +117,24 @@ width: 100%;      }
         font-family: "Roboto", sans-serif;
         position: absolute;
         top: 25%;
-        right: 3%;width: 50%;
+        right: 3%;
+        width: 50%;
       }
     }
     .right {
       width: 50%;
       padding: 0 15px;
       @media (max-width: 991px) {
-        width: 100%;      }
+        width: 100%;
+      }
       background-color: #fff;
       .info-text {
         display: flex;
         margin-top: 35px;
         margin-left: 30px;
         @media (max-width: 991px) {
-margin-left: 0;          }
+          margin-left: 0;
+        }
         svg {
           color: $orange;
           font-size: 30px;

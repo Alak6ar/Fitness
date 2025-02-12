@@ -3,11 +3,14 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import girl from "../../public/images/girl.png";
 import { FaArrowsAltV, FaFemale, FaRunning, FaWheelchair } from "react-icons/fa";
-
+import bckimg from "../../public/images/hero.png";
 const Home = () => {
   return (
     <div>
       <div className="home">
+        <div className="background">
+          <img src={bckimg} alt="" />
+        </div>
         <Header />
         <div className="hero-caption">
           <div className="container">
