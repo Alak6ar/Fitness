@@ -11,6 +11,10 @@
       display: block;
       height: 100vh !important;
       object-fit: cover;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
   }
 
@@ -33,12 +37,13 @@
         font-size: 50px;
       }
       @media (max-width: 576px) {
-        font-size: 35px;
+        font-size: 38px;
       }
     }
     h5 {
       font-size: 120px;
       font-weight: 700;
+      margin-top: 20px;
       margin-bottom: 14px;
       color: #fff;
       line-height: 1.2;
@@ -61,22 +66,15 @@
       border: 2px solid #fff;
       color: #fff;
       background: none;
-      border-radius: 0px;
+      border-radius: 10px;
       text-transform: uppercase;
       padding: 14px 43px;
-      -moz-user-select: none;
       cursor: pointer;
       display: inline-block;
       letter-spacing: 1px;
-      margin-bottom: 0;
-      position: relative;
-      transition: 0.1s ease-in-out !important;
-      position: relative;
-      overflow: hidden;
-      margin: 0;
+      margin-top: 20px;
       @media (max-width: 991px) {
         font-size: 14px;
-        margin-top: 20px;
       }
       &:hover {
         background-color: red;
@@ -86,7 +84,7 @@
 }
 
 .all-about {
-  .all-flex {
+    .all-flex {
     display: flex;
     align-items: center;
     @media (max-width: 991px) {
@@ -95,15 +93,14 @@
     .left {
       background-color: $orange;
       width: 50%;
-      @media (max-width: 991px) {
-        width: 100%;
-      }
       display: flex;
       align-items: center;
       position: relative;
       text-align: right !important;
-      padding: 30px;
-      padding-left: 6%;
+    padding: 130px 0 130px 6%;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
       img {
         height: auto;
         max-width: 100%;
@@ -116,9 +113,13 @@
         line-height: 70px;
         font-family: "Roboto", sans-serif;
         position: absolute;
-        top: 25%;
+        top: 40%;
         right: 3%;
         width: 50%;
+        @media (max-width: 991px) {
+          font-size: 55px;
+          font-weight: 700;
+        }
       }
     }
     .right {
@@ -136,9 +137,11 @@
           margin-left: 0;
         }
         svg {
-          color: $orange;
-          font-size: 30px;
-        }
+            color: $orange;
+            width: 70px;  // Sabit bir genişlik
+            height: 30px; // Sabit bir yükseklik
+          }
+          
         .text {
           h5 {
             font-size: 22px;

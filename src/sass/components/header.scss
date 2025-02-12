@@ -27,6 +27,9 @@
           color: #fff;
           letter-spacing: 1px;
           cursor: pointer;
+          &:hover {
+            color: $orange;
+          }
         }
       }
     }
@@ -56,16 +59,13 @@
   .right {
     display: flex;
     align-items: center;
-
     .icons {
       display: flex;
       gap: 20px;
-
       @media (max-width: 991px) {
         display: none;
       }
     }
-
     svg {
       color: #fff;
     }
@@ -78,7 +78,7 @@
 
     .hamburger-menu {
       display: none;
-color: #fff;
+      color: #fff;
       @media (max-width: 991px) {
         display: block;
       }
