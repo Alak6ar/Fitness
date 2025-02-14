@@ -1,5 +1,115 @@
-.trainers{
-    background-image: url("https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2016/10/trainer-bag.jpg");
-    height: 100vh;
+.trainers {
+  background-image: url("https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2016/10/trainer-bag.jpg");
+  height: 100vh;
+  background-position: center;
+  padding: 90px 15px;
+  margin: 80px 0;
+  .trainers-up {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    h1 {
+      margin-bottom: 50px !important;
+      color: #111111;
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .line {
+      border-bottom: 2px solid #de1c1c;
+      width: 60%;
+      margin-bottom: 66px;
+    }
+  }
+  .vc-item-wrap {
+    position: relative;
+    .vc-item {
+      text-align: center;
+      &:hover .vc-overly {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+      .trainer-img {
+        width: 262px;
+        height: 335px;
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
+      .vc-overly {
+        background: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        transform-style: preserve-3d;
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          top: 45%;
+          z-index: 99;
+          li {
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-right: 5px;
 
+            a {
+              border: 2px solid #fb5b21;
+              border-radius: 50%;
+              display: block;
+              height: 40px;
+              line-height: 37px;
+              text-align: center;
+              width: 40px;
+              border-color: #fb5b21;
+              &:hover {
+                background-color: #fb5b21;
+              }
+            }
+          }
+        }
+      }
+      .vc-team-meta {
+        background-color: #fb5b21;
+        border-radius: 30px;
+        color: #ffffff;
+        left: 0;
+        bottom: -40px;
+        margin: 0 auto;
+        padding: 15px 0;
+        position: absolute;
+        right: 0;
+        width: 83%;
+        z-index: 100; /* Yüksek z-index değeri verildi */
+        h3 {
+          margin-bottom: 5px;
+          font-size: 20px;
+          line-height: 26px;
+          a {
+            color: #ffffff;
+          }
+        }
+        div {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .slick-slide > div {
+    height: 500px;
+  }
+}
+.slick-arrow {
+  display: none !important;
 }
