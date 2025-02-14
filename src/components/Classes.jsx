@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -33,10 +31,34 @@ const Classes = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3.16,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    gap: 50,
+    responsive: [
+      {
+        breakpoint: 1024, // 1024px ve altı
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // 768px ve altı (tablet)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, // 480px ve altı (mobil)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-
+  
   return (
     <div className="clases">
       <div className="container">
@@ -61,12 +83,12 @@ const Classes = () => {
                           classItem.imageUrl &&
                           classItem.imageUrl.startsWith("http")
                             ? classItem.imageUrl
-                            : "https://via.placeholder.com/150"
+                            : ""
                         }
                         alt={classItem.name}
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = "https://via.placeholder.com/150";
+                          e.target.src = "";
                         }}
                       />
                     </div>
@@ -77,7 +99,7 @@ const Classes = () => {
                             <li key={index}>
                               <ul className="class-slider-ul-child">
                                 <li>{`Gün: ${schedule.dayOfWeek}`}</li>
-                                <li>{`${schedule.startTime} - ${schedule.endTime}`}</li>
+                                <li>{`${schedule.startTime}`}</li>
                               </ul>
                             </li>
                           ))

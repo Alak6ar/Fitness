@@ -6,6 +6,8 @@ import { FaArrowsAltV, FaFemale, FaRunning } from "react-icons/fa";
 import bckimg from "../../public/images/hero.png";
 import { gsap } from "gsap";
 import Classes from "../components/Classes";
+import Client from "../components/Client";
+import Trainers from "../components/Trainers";
 
 const Home = () => {
   useEffect(() => {
@@ -95,6 +97,8 @@ const Home = () => {
         </div>
       </div>
       <Classes/>
+      <Client/>
+      <Trainers/>
     </div>
   );
 };
