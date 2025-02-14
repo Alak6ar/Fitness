@@ -1,160 +1,171 @@
-.home {
-  height: 100vh;
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-    img {
+.home-page {
+  .home {
+    height: 100vh;
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      display: block;
-      height: 100vh !important;
-      object-fit: cover;
 
-      @media (max-width: 768px) {
+      img {
         width: 100%;
+        display: block;
+        height: 100vh !important;
+        object-fit: cover;
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
     }
-  }
 
-  .hero-caption {
-    margin-top: 60px;
-    padding: 0 15px;
+    .hero-caption {
+      margin-top: 60px;
+      padding: 0 15px;
 
-    h2 {
-      font-size: 60px;
-      font-family: "Oswald", sans-serif;
-      font-weight: 700;
-      display: inline-block;
-      position: relative;
-      text-transform: uppercase;
-      -webkit-text-stroke: 1px #f6f7f8;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
-
-      @media (max-width: 768px) {
-        font-size: 50px;
-      }
-      @media (max-width: 576px) {
-        font-size: 38px;
-      }
-    }
-    h5 {
-      font-size: 120px;
-      font-weight: 700;
-      margin-top: 20px;
-      margin-bottom: 14px;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      @media (max-width: 991px) {
-        font-size: 100px;
-        margin-top: 15px;
-      }
-      @media (max-width: 768px) {
-        font-size: 80px;
-      }
-      @media (max-width: 576px) {
+      h2 {
         font-size: 60px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        display: inline-block;
+        position: relative;
+        text-transform: uppercase;
+        -webkit-text-stroke: 1px #f6f7f8;
+        -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+
+        @media (max-width: 768px) {
+          font-size: 50px;
+        }
+        @media (max-width: 576px) {
+          font-size: 38px;
+        }
       }
-    }
-    a {
-      font-size: 18px;
-      font-weight: 600;
-      border: 2px solid #fff;
-      color: #fff;
-      background: none;
-      border-radius: 10px;
-      text-transform: uppercase;
-      padding: 14px 43px;
-      cursor: pointer;
-      display: inline-block;
-      letter-spacing: 1px;
-      margin-top: 20px;
-      @media (max-width: 991px) {
-        font-size: 14px;
+      h5 {
+        font-size: 120px;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 14px;
+        color: #fff;
+        line-height: 1.2;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        @media (max-width: 991px) {
+          font-size: 100px;
+          margin-top: 15px;
+        }
+        @media (max-width: 768px) {
+          font-size: 80px;
+        }
+        @media (max-width: 576px) {
+          font-size: 60px;
+        }
       }
-      &:hover {
-        background-color: red;
+      a {
+        font-size: 18px;
+        font-weight: 600;
+        border: 2px solid #fff;
+        color: #fff;
+        background: none;
+        border-radius: 10px;
+        text-transform: uppercase;
+        padding: 14px 43px;
+        cursor: pointer;
+        display: inline-block;
+        letter-spacing: 1px;
+        margin-top: 20px;
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+        &:hover {
+          background-color: red;
+        }
       }
     }
   }
-}
 
-.all-about {
+  .all-about {
     .all-flex {
-    display: flex;
-    align-items: center;
-    @media (max-width: 991px) {
-      flex-direction: column;
-    }
-    .left {
-      background-color: #860102;
-      width: 50%;
       display: flex;
       align-items: center;
-      position: relative;
-      text-align: right !important;
-    padding: 130px 0 130px 6%;
       @media (max-width: 991px) {
-        width: 100%;
+        flex-direction: column;
       }
-      img {
-        height: auto;
-        max-width: 100%;
-        position: relative;
-      }
-      h2 {
-        color: #ffffff;
-        font-size: 68px;
-        font-weight: 300;
-        line-height: 70px;
-        font-family: "Roboto", sans-serif;
-        position: absolute;
-        top: 40%;
-        right: 3%;
+      .left {
+        background-color: #860102;
         width: 50%;
-        @media (max-width: 991px) {
-          font-size: 55px;
-          font-weight: 700;
-        }
-      }
-    }
-    .right {
-      width: 50%;
-      padding: 0 15px;
-      @media (max-width: 991px) {
-        width: 100%;
-      }
-      background-color: #fff;
-      .info-text {
         display: flex;
-        margin-top: 35px;
-        margin-left: 30px;
+        align-items: center;
+        position: relative;
+        text-align: right !important;
+        padding: 130px 0 130px 6%;
         @media (max-width: 991px) {
-          margin-left: 0;
+          width: 100%;
         }
-        svg {
+        img {
+          height: auto;
+          max-width: 100%;
+          position: relative;
+        }
+        h2 {
+          color: #ffffff;
+          font-size: 68px;
+          font-weight: 300;
+          line-height: 70px;
+          font-family: "Roboto", sans-serif;
+          position: absolute;
+          top: 40%;
+          right: 3%;
+          width: 50%;
+          @media (max-width: 991px) {
+            font-size: 55px;
+            font-weight: 700;
+          }
+        }
+      }
+      .right {
+        width: 50%;
+        padding: 0 15px;
+        @media (max-width: 991px) {
+          width: 100%;
+        }
+        background-color: #fff;
+        .info-text {
+          display: flex;
+          margin-top: 35px;
+          margin-left: 30px;
+          @media (max-width: 991px) {
+            margin-left: 0;
+          }
+          svg {
             color: $orange;
-            width: 70px;  // Sabit bir genişlik
+            width: 70px; // Sabit bir genişlik
             height: 30px; // Sabit bir yükseklik
           }
-          
-        .text {
-          h5 {
-            font-size: 22px;
-            margin-left: 5px;
-          }
-          p {
-            font-size: 15px;
-            margin-left: 5px;
-            margin-top: 15px;
-            color: #666666;
+
+          .text {
+            h5 {
+              font-size: 22px;
+              margin-left: 5px;
+            }
+            p {
+              font-size: 15px;
+              margin-left: 5px;
+              margin-top: 15px;
+              color: #666666;
+            }
           }
         }
       }
     }
   }
+  .vc_custom_1496653202303 {
+    background-image: url("https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2017/06/bmi.jpg?id=2670");
+    background-position: center;
+    height: 80vh;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    padding-top: 65px !important;
+    padding-bottom: 100px !important;
+}
 }

@@ -13,11 +13,11 @@ const Home = () => {
   useEffect(() => {
     // h2 animasyonu
     gsap.from(".hero-caption h2", {
-      x: -200, 
+      x: -200,
       opacity: 0,
       duration: 1,
     });
-    
+
     // h5 animasyonu, h2'den 0.3 saniye sonra başlasın
     gsap.from(".hero-caption h5", {
       x: -200,
@@ -25,7 +25,7 @@ const Home = () => {
       duration: 1,
       delay: 0.3,
     });
-    
+
     // a animasyonu, h5'ten 0.3 saniye sonra başlasın
     gsap.from(".hero-caption a", {
       x: -200,
@@ -36,7 +36,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="home-page">
       <div className="home">
         <div className="background">
           <img src={bckimg} alt="" />
@@ -75,9 +75,10 @@ const Home = () => {
                 <div className="text">
                   <h5>Running</h5>
                   <p>
-                    Running is a method of terrestrial locomotion allowing humans
-                    and other animals to move rapidly on foot. Running is a type
-                    of gait characterized by an aerial phase in which all feet...
+                    Running is a method of terrestrial locomotion allowing
+                    humans and other animals to move rapidly on foot. Running is
+                    a type of gait characterized by an aerial phase in which all
+                    feet...
                   </p>
                 </div>
               </div>
@@ -87,8 +88,8 @@ const Home = () => {
                   <h5>Yoga</h5>
                   <p>
                     Yoga, is a meditative means of discovering dysfunctional
-                    perception and cognition, as well as overcoming it for release
-                    from suffering, inner peace and salvation
+                    perception and cognition, as well as overcoming it for
+                    release from suffering, inner peace and salvation
                   </p>
                 </div>
               </div>
@@ -96,9 +97,57 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Classes/>
-      <Client/>
-      <Trainers/>
+      <Classes />
+      <Client />
+      <Trainers />
+
+      <div className="vc_custom_1496653202303">
+        <div className="container">
+          <div className="vc_column-inner">
+            <div className="bmi-flex">
+              <div className="left">
+                <h3 class="rt-title">CALCULATE YOUR BMI</h3>
+                <p className="rt-subtitle">
+                  Lorem ipsum dolor sit amet, consectet ad elit sed diam nonummy
+                  nibh euismod tincidunt ut laoreet dolore magnaLorem ipsum
+                  dolor sit amet
+                </p>
+
+                <form class="rt-bmi-form">
+                  <div class="rt-bmi-radio">
+                    <input id="rt-bmi-metric-1211861175" type="radio" name="rt-bmi-unit" value="metric" checked/>
+                    <label for="rt-bmi-metric-1211861175">Metric Units</label>
+                    <input id="rt-bmi-imperial-1211861175" type="radio" name="rt-bmi-unit" value="imperial"/>
+                    <label for="rt-bmi-imperial-1211861175">Imperial Units</label>
+                                  </div>
+
+                     <div class="rt-bmi-fields">
+                  <input type="text" class="rt-bmi-fields-metric" name="rt-bmi-weight" placeholder="Weight / kg"/>
+                  <input type="text" class="rt-bmi-fields-metric" name="rt-bmi-height" placeholder="Height / cm"/>
+
+
+                      </div>     
+                    <input type="submit" class="rt-bmi-submit" value="CALCULATE"/>
+                        <div className="rt-bmi-result">
+                          Your BMI is: <span class="rt-bmi-val">15.31</span>, and weight status is: <span class="rt-bmi-status">Underweight</span>
+                            </div>
+                </form>
+              </div>
+              <div className="right">
+                <table class="bmi-chart">
+                  <tbody>
+                    <tr><th>BMI</th><th>Weight Status</th></tr>
+                      <tr><td>Below 18.5</td><td>Underweight</td></tr>
+                      <tr><td>18.5 - 24.9</td><td>Normal</td></tr>
+                      <tr><td>25 - 29.9</td><td>Overweight</td></tr>
+                      <tr><td>30 and Above</td><td>Obese</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
