@@ -14,6 +14,7 @@ import img3 from "../../public/images/img3.jpg";
 import img4 from "../../public/images/img4.jpg";
 import img5 from "../../public/images/img5.jpg";
 import img6 from "../../public/images/img6.jpg";
+import Pricing from "../components/Pricing";
 
 const Home = () => {
   useEffect(() => {
@@ -255,6 +256,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    <Pricing/>
     </div>
   );
 };

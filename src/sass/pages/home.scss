@@ -331,6 +331,12 @@
         opacity: 0;
         transform: scale(0.8);
         animation: fadeIn 0.5s ease-in-out forwards;
+        img {
+          &:hover {
+            filter: brightness(0.7);
+            cursor: pointer;
+          }
+        }
       }
       @keyframes fadeIn {
         from {
@@ -340,7 +346,8 @@
         to {
           opacity: 1;
           transform: scale(1);
-        }}
+        }
+      }
     }
   }
 }
