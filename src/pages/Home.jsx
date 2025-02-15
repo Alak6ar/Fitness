@@ -8,6 +8,12 @@ import { gsap } from "gsap";
 import Classes from "../components/Classes";
 import Client from "../components/Client";
 import Trainers from "../components/Trainers";
+import img1 from "../../public/images/img1.jpg";
+import img2 from "../../public/images/img2.jpg";
+import img3 from "../../public/images/img3.jpg";
+import img4 from "../../public/images/img4.jpg";
+import img5 from "../../public/images/img5.jpg";
+import img6 from "../../public/images/img6.jpg";
 
 const Home = () => {
   useEffect(() => {
@@ -63,6 +69,24 @@ const Home = () => {
     if (bmi >= 25 && bmi <= 29.9) return "Overweight";
     return "Obese";
   };
+  const galleryData = [
+    { id: 1, src: "../../public/images/img1.jpg", category: "Yoga" },
+    { id: 2, src: "../../public/images/img2.jpg", category: "Fitness" },
+    { id: 3, src: "../../public/images/img3.jpg", category: "Gym" },
+    { id: 4, src: "../../public/images/img4.jpg", category: "Running" },
+    { id: 5, src: "../../public/images/img5.jpg", category: "Yoga" },
+    { id: 6, src: "../../public/images/img6.jpg", category: "Fitness" },
+  ];
+  
+  const categories = ["All", "Yoga", "Fitness", "Gym", "Running"];
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredImages =
+    selectedCategory === "All"
+      ? galleryData
+      : galleryData.filter((img) => img.category === selectedCategory);
+
 
   return (
     <div className="home-page">
@@ -206,6 +230,31 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="our-gallery">
+      <div className="container">
+        <div className="gallery-flex">
+          <div className="gallery-up">
+            <h2>OUR GALLERY</h2>
+          </div>
+          <div className="rt-gallery-tab">
+            {categories.map((cat) => (
+              <Link   key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={selectedCategory === cat ? "active" : ""}>
+                {cat}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="row rt-gallery-wrapper">
+          {filteredImages.map((img) => (
+            <div className="rt-gallery-box" key={img.id}>
+              <img src={img.src} alt={img.category} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
     </div>
   );
 };

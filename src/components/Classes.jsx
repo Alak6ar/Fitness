@@ -31,7 +31,7 @@ const Classes = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 3.25,
     slidesToScroll: 1,
     gap: 50,
     responsive: [
