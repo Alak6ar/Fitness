@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import girl from "../../public/images/girl.png";
@@ -34,6 +34,35 @@ const Home = () => {
       delay: 0.6,
     });
   }, []);
+
+  const [unit, setUnit] = useState("metric");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [bmi, setBmi] = useState(null);
+  const [status, setStatus] = useState("");
+
+  const calculateBMI = (e) => {
+    e.preventDefault();
+
+    let calculatedBMI = 0;
+    
+    if (unit === "metric") {
+      const heightInMeters = height / 100;
+      calculatedBMI = weight / (heightInMeters * heightInMeters);
+    } else {
+      calculatedBMI = (weight / (height * height)) * 703;
+    }
+
+    setBmi(calculatedBMI.toFixed(2));
+    setStatus(getBMICategory(calculatedBMI));
+  };
+
+  const getBMICategory = (bmi) => {
+    if (bmi < 18.5) return "Underweight";
+    if (bmi >= 18.5 && bmi <= 24.9) return "Normal";
+    if (bmi >= 25 && bmi <= 29.9) return "Overweight";
+    return "Obese";
+  };
 
   return (
     <div className="home-page">
@@ -104,47 +133,76 @@ const Home = () => {
       <div className="vc_custom_1496653202303">
         <div className="container">
           <div className="vc_column-inner">
-            <div className="bmi-flex">
-              <div className="left">
-                <h3 class="rt-title">CALCULATE YOUR BMI</h3>
-                <p className="rt-subtitle">
-                  Lorem ipsum dolor sit amet, consectet ad elit sed diam nonummy
-                  nibh euismod tincidunt ut laoreet dolore magnaLorem ipsum
-                  dolor sit amet
-                </p>
+             <div className="bmi-flex">
+      <div className="left">
+        <h3 className="rt-title">CALCULATE YOUR BMI</h3>
+        <p className="rt-subtitle">
+          Enter your weight and height to calculate your Body Mass Index (BMI).
+        </p>
 
-                <form class="rt-bmi-form">
-                  <div class="rt-bmi-radio">
-                    <input id="rt-bmi-metric-1211861175" type="radio" name="rt-bmi-unit" value="metric" checked/>
-                    <label for="rt-bmi-metric-1211861175">Metric Units</label>
-                    <input id="rt-bmi-imperial-1211861175" type="radio" name="rt-bmi-unit" value="imperial"/>
-                    <label for="rt-bmi-imperial-1211861175">Imperial Units</label>
-                                  </div>
+        <form className="rt-bmi-form" onSubmit={calculateBMI}>
+          <div className="rt-bmi-radio">
+            <label>
+              <input
+                type="radio"
+                name="unit"
+                value="metric"
+                checked={unit === "metric"}
+                onChange={() => setUnit("metric")}
+              />
+              Metric (kg, cm)
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="unit"
+                value="imperial"
+                checked={unit === "imperial"}
+                onChange={() => setUnit("imperial")}
+              />
+              Imperial (lbs, in)
+            </label>
+          </div>
 
-                     <div class="rt-bmi-fields">
-                  <input type="text" class="rt-bmi-fields-metric" name="rt-bmi-weight" placeholder="Weight / kg"/>
-                  <input type="text" class="rt-bmi-fields-metric" name="rt-bmi-height" placeholder="Height / cm"/>
+          <div className="rt-bmi-fields">
+            <input
+              type="number"
+              placeholder={unit === "metric" ? "Weight (kg)" : "Weight (lbs)"}
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              required
+            />
+            <input
+              type="number"
+              placeholder={unit === "metric" ? "Height (cm)" : "Height (in)"}
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+              required
+            />
+          </div>
 
-
-                      </div>     
-                    <input type="submit" class="rt-bmi-submit" value="CALCULATE"/>
-                        <div className="rt-bmi-result">
-                          Your BMI is: <span class="rt-bmi-val">15.31</span>, and weight status is: <span class="rt-bmi-status">Underweight</span>
-                            </div>
-                </form>
-              </div>
-              <div className="right">
-                <table class="bmi-chart">
-                  <tbody>
-                    <tr><th>BMI</th><th>Weight Status</th></tr>
-                      <tr><td>Below 18.5</td><td>Underweight</td></tr>
-                      <tr><td>18.5 - 24.9</td><td>Normal</td></tr>
-                      <tr><td>25 - 29.9</td><td>Overweight</td></tr>
-                      <tr><td>30 and Above</td><td>Obese</td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <button type="submit" className="rt-bmi-submit">CALCULATE</button>
+          
+          {bmi && (
+            <div className="rt-bmi-result">
+              Your BMI is: <span className="rt-bmi-val">{bmi}</span>, and weight status is: <span className="rt-bmi-status">{status}</span>
             </div>
+          )}
+        </form>
+      </div>
+
+      <div className="rt-right">
+        <table className="bmi-chart">
+          <tbody>
+            <tr><th>BMI</th><th>Weight Status</th></tr>
+            <tr><td>Below 18.5</td><td>Underweight</td></tr>
+            <tr><td>18.5 - 24.9</td><td>Normal</td></tr>
+            <tr><td>25 - 29.9</td><td>Overweight</td></tr>
+            <tr><td>30 and Above</td><td>Obese</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
           </div>
         </div>
       </div>

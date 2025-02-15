@@ -1,9 +1,13 @@
 
 .client {
+  padding: 0 15px;
   h1 {
     color: #111111;
     margin-bottom: 60px;
     font-size: 28px;
+    @media (max-width: 991px) {
+     font-size: 20px;
+    }
 }
   .rt-vc-item {
     margin-right: 30px;

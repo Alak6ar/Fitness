@@ -1,5 +1,8 @@
 .clases {
   margin-top: 150px;
+  padding: 0 15px;
+  @media (max-width: 991px) {
+margin-bottom: 50px;  }
   .clas-up {
     display: flex;
     gap: 20px;
@@ -9,6 +12,9 @@
       float: left;
       font-size: 30px;
       font-weight: 600;
+      @media (max-width: 991px) {
+        font-size: 25px;
+      }
     }
 
     .line {
@@ -45,6 +51,10 @@
       .clases-img {
         width: 350px;
         height: 173px;
+        @media (max-width: 991px) {
+          width: 100%;
+         
+        }
         img {
           transition: all 0.2s ease-in-out;
 
@@ -109,7 +119,12 @@
   }
   .slick-slide {
     margin-right: 30px;
-    width: 356px !important;
-    height: 287px !important;
+    width: 356px;
+    height: 287px;
+    @media (max-width: 991px) {
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
   }
 }
