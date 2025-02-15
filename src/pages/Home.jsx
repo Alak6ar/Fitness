@@ -70,12 +70,12 @@ const Home = () => {
     return "Obese";
   };
   const galleryData = [
-    { id: 1, src: "../../public/images/img1.jpg", category: "Yoga" },
-    { id: 2, src: "../../public/images/img2.jpg", category: "Fitness" },
-    { id: 3, src: "../../public/images/img3.jpg", category: "Gym" },
-    { id: 4, src: "../../public/images/img4.jpg", category: "Running" },
-    { id: 5, src: "../../public/images/img5.jpg", category: "Yoga" },
-    { id: 6, src: "../../public/images/img6.jpg", category: "Fitness" },
+    { id: 1, src:img1, category: "Yoga" },
+    { id: 2, src:img2, category: "Fitness" },
+    { id: 3, src:img3, category: "Gym" },
+    { id: 4, src:img4, category: "Running" },
+    { id: 5, src:img5, category: "Yoga" },
+    { id: 6, src:img6, category: "Fitness" },
   ];
   
   const categories = ["All", "Yoga", "Fitness", "Gym", "Running"];
