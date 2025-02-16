@@ -5,4 +5,58 @@
     color: #fff;
     font-size: 28px;
   }
+  .pricing-flex {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 71px;
+    .pricing-card {
+      padding: 24px 28px 24px 28px;
+      background: rgb(13, 13, 13);
+      border-radius: 16px;
+
+      h2 {
+        color: red;
+        font-size: 40px;
+      }
+      p {
+        font-size: 56px;
+        color: #ffffff;
+        margin-top: 24px;
+      }
+      span {
+        font-size: 16px;
+        color: #878787;
+        margin-top: 8px;
+        display: block;
+      }
+      ul {
+        margin-top: 24px;
+        li {
+          color: #e1e1e1;
+          margin-top: 16px;
+          svg {
+            margin-right: 17px;
+          }
+        }
+      }
+      button {
+        background: rgb(255, 0, 0);
+        padding: 16px 64px 16px 64px;
+        border-radius: 12px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: #fff;
+        margin-top: 78px;
+        font-family: Poppins, sans-serif;
+
+        &:hover{
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic');
