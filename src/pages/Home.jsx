@@ -15,6 +15,7 @@ import img4 from "../../public/images/img4.jpg";
 import img5 from "../../public/images/img5.jpg";
 import img6 from "../../public/images/img6.jpg";
 import Pricing from "../components/Pricing";
+import Posts from "../components/Posts";
 
 const Home = () => {
   useEffect(() => {
@@ -52,7 +53,7 @@ const Home = () => {
     e.preventDefault();
 
     let calculatedBMI = 0;
-    
+
     if (unit === "metric") {
       const heightInMeters = height / 100;
       calculatedBMI = weight / (heightInMeters * heightInMeters);
@@ -71,14 +72,14 @@ const Home = () => {
     return "Obese";
   };
   const galleryData = [
-    { id: 1, src:img1, category: "Yoga" },
-    { id: 2, src:img2, category: "Fitness" },
-    { id: 3, src:img3, category: "Gym" },
-    { id: 4, src:img4, category: "Running" },
-    { id: 5, src:img5, category: "Yoga" },
-    { id: 6, src:img6, category: "Fitness" },
+    { id: 1, src: img1, category: "Yoga" },
+    { id: 2, src: img2, category: "Fitness" },
+    { id: 3, src: img3, category: "Gym" },
+    { id: 4, src: img4, category: "Running" },
+    { id: 5, src: img5, category: "Yoga" },
+    { id: 6, src: img6, category: "Fitness" },
   ];
-  
+
   const categories = ["All", "Yoga", "Fitness", "Gym", "Running"];
 
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -87,7 +88,6 @@ const Home = () => {
     selectedCategory === "All"
       ? galleryData
       : galleryData.filter((img) => img.category === selectedCategory);
-
 
   return (
     <div className="home-page">
@@ -158,105 +158,141 @@ const Home = () => {
       <div className="vc_custom_1496653202303">
         <div className="container">
           <div className="vc_column-inner">
-             <div className="bmi-flex">
-      <div className="left">
-        <h3 className="rt-title">CALCULATE YOUR BMI</h3>
-        <p className="rt-subtitle">
-          Enter your weight and height to calculate your Body Mass Index (BMI).
-        </p>
+            <div className="bmi-flex">
+              <div className="left">
+                <h3 className="rt-title">CALCULATE YOUR BMI</h3>
+                <p className="rt-subtitle">
+                  Enter your weight and height to calculate your Body Mass Index
+                  (BMI).
+                </p>
 
-        <form className="rt-bmi-form" onSubmit={calculateBMI}>
-          <div className="rt-bmi-radio">
-            <label>
-              <input
-                type="radio"
-                name="unit"
-                value="metric"
-                checked={unit === "metric"}
-                onChange={() => setUnit("metric")}
-              />
-              Metric (kg, cm)
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="unit"
-                value="imperial"
-                checked={unit === "imperial"}
-                onChange={() => setUnit("imperial")}
-              />
-              Imperial (lbs, in)
-            </label>
-          </div>
+                <form className="rt-bmi-form" onSubmit={calculateBMI}>
+                  <div className="rt-bmi-radio">
+                    <label>
+                      <input
+                        type="radio"
+                        name="unit"
+                        value="metric"
+                        checked={unit === "metric"}
+                        onChange={() => setUnit("metric")}
+                      />
+                      Metric (kg, cm)
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="unit"
+                        value="imperial"
+                        checked={unit === "imperial"}
+                        onChange={() => setUnit("imperial")}
+                      />
+                      Imperial (lbs, in)
+                    </label>
+                  </div>
 
-          <div className="rt-bmi-fields">
-            <input
-              type="number"
-              placeholder={unit === "metric" ? "Weight (kg)" : "Weight (lbs)"}
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              required
-            />
-            <input
-              type="number"
-              placeholder={unit === "metric" ? "Height (cm)" : "Height (in)"}
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              required
-            />
-          </div>
+                  <div className="rt-bmi-fields">
+                    <input
+                      type="number"
+                      placeholder={
+                        unit === "metric" ? "Weight (kg)" : "Weight (lbs)"
+                      }
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                      required
+                    />
+                    <input
+                      type="number"
+                      placeholder={
+                        unit === "metric" ? "Height (cm)" : "Height (in)"
+                      }
+                      value={height}
+                      onChange={(e) => setHeight(e.target.value)}
+                      required
+                    />
+                  </div>
 
-          <button type="submit" className="rt-bmi-submit">CALCULATE</button>
-          
-          {bmi && (
-            <div className="rt-bmi-result">
-              Your BMI is: <span className="rt-bmi-val">{bmi}</span>, and weight status is: <span className="rt-bmi-status">{status}</span>
+                  <button type="submit" className="rt-bmi-submit">
+                    CALCULATE
+                  </button>
+
+                  {bmi && (
+                    <div className="rt-bmi-result">
+                      Your BMI is: <span className="rt-bmi-val">{bmi}</span>,
+                      and weight status is:{" "}
+                      <span className="rt-bmi-status">{status}</span>
+                    </div>
+                  )}
+                </form>
+              </div>
+
+              <div className="rt-right">
+                <table className="bmi-chart">
+                  <tbody>
+                    <tr>
+                      <th>BMI</th>
+                      <th>Weight Status</th>
+                    </tr>
+                    <tr>
+                      <td>Below 18.5</td>
+                      <td>Underweight</td>
+                    </tr>
+                    <tr>
+                      <td>18.5 - 24.9</td>
+                      <td>Normal</td>
+                    </tr>
+                    <tr>
+                      <td>25 - 29.9</td>
+                      <td>Overweight</td>
+                    </tr>
+                    <tr>
+                      <td>30 and Above</td>
+                      <td>Obese</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          )}
-        </form>
-      </div>
-
-      <div className="rt-right">
-        <table className="bmi-chart">
-          <tbody>
-            <tr><th>BMI</th><th>Weight Status</th></tr>
-            <tr><td>Below 18.5</td><td>Underweight</td></tr>
-            <tr><td>18.5 - 24.9</td><td>Normal</td></tr>
-            <tr><td>25 - 29.9</td><td>Overweight</td></tr>
-            <tr><td>30 and Above</td><td>Obese</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
           </div>
         </div>
       </div>
       <div className="our-gallery">
-      <div className="container">
-        <div className="gallery-flex">
-          <div className="gallery-up">
-            <h2>OUR GALLERY</h2>
+        <div className="container">
+          <div className="gallery-flex">
+            <div className="gallery-up">
+              <h2>OUR GALLERY</h2>
+            </div>
+            <div className="rt-gallery-tab">
+              {categories.map((cat) => (
+                <Link
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={selectedCategory === cat ? "active" : ""}
+                >
+                  {cat}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="rt-gallery-tab">
-            {categories.map((cat) => (
-              <Link   key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={selectedCategory === cat ? "active" : ""}>
-                {cat}
-              </Link>
+          <div className="row rt-gallery-wrapper">
+            {filteredImages.map((img) => (
+              <div className="rt-gallery-box" key={img.id}>
+                <img src={img.src} alt={img.category} />
+              </div>
             ))}
           </div>
         </div>
-        <div className="row rt-gallery-wrapper">
-          {filteredImages.map((img) => (
-            <div className="rt-gallery-box" key={img.id}>
-              <img src={img.src} alt={img.category} />
-            </div>
-          ))}
+      </div>
+      <Pricing />
+      <div className="summer">
+        <div className="container">
+          <div className="summer-center">
+            <h1>FITNESS CLASSES THIS SUMMER.</h1>
+            <p>PAY NOW AND GET <span>35%</span> DISCOUNT</p>
+            <Link>BECOME A MEMBER</Link>
+          </div>
         </div>
       </div>
-    </div>
-    <Pricing/>
+      <Posts/>
     </div>
   );
 };
