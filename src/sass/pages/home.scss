@@ -356,6 +356,14 @@
     height: 65vh;
     background-position: center;
     padding: 60px 15px 90px;
+    @media (max-width: 991px) {
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+    }
     .summer-center {
       margin-left: 20%;
       @media (max-width: 991px) {

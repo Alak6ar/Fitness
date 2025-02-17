@@ -15,10 +15,9 @@ const Classes = () => {
         const response = await axios.get(BASE_URL, {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzNzMyN2M0LTIwNjUtNGQ2NS1iOTAzLWI0YjRkNDk4OWY3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzM5ODA1NTgyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUxNzkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MTc5LyJ9.c_ug4--HneAK3StZ5qCEGPy1HwBhGfsCzhqrwkvcSL0              ",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzNzMyN2M0LTIwNjUtNGQ2NS1iOTAzLWI0YjRkNDk4OWY3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzM5ODk1MTU4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUxNzkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MTc5LyJ9.ROcB7Hwl8a8looln7QHl2RHgDFHXwEXDQZmFCLxJa2o              ",
           },
         });
-        // console.log("API'den gelen veriler:", response.data);
         setClasses(response.data);
       } catch (error) {
         console.error("Error fetching classes:", error);
@@ -33,32 +32,13 @@ const Classes = () => {
     speed: 500,
     slidesToShow: 3.25,
     slidesToScroll: 1,
-    gap: 50,
     responsive: [
-      {
-        breakpoint: 1024, // 1024px ve altı
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768, // 768px ve altı (tablet)
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480, // 480px ve altı (mobil)
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
   };
-  
+
   return (
     <div className="clases">
       <div className="container">
@@ -76,21 +56,13 @@ const Classes = () => {
 
               return (
                 <div key={classItem.id} className="single-item">
-                  <div className="single-item-content">
+                  <Link to={`/classes/${classItem.id}`} className="single-item-content">
                     <div className="clases-img">
-                    <img
-  src={
-    classItem.imageUrl && classItem.imageUrl.startsWith("http")
-      ? classItem.imageUrl
-      : null
-  }
-  alt={classItem.name}
-  onError={(e) => {
-    e.target.onerror = null;
-    e.target.src = "path/to/default-image.jpg"; // Alternatif görsel yolu
-  }}
-/>
-
+                      <img
+                        src={classItem.imageUrl?.startsWith("http") ? classItem.imageUrl : "path/to/default-image.jpg"}
+                        alt={classItem.name}
+                        onError={(e) => { e.target.src = "path/to/default-image.jpg"; }}
+                      />
                     </div>
                     <div className="overly">
                       <ul>
@@ -108,10 +80,10 @@ const Classes = () => {
                         )}
                       </ul>
                     </div>
-                  </div>
+                  </Link>
                   <div className="single-item-meta">
                     <h3>
-                      <Link to="#">{classItem.name}</Link>
+                      <Link to={`/classes/${classItem.id}`}>{classItem.name}</Link>
                     </h3>
                     <span>
                       <FaUser /> {trainer}
