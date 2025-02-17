@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaFacebook, FaFax, FaGoogle, FaPhone, FaSnapchat, FaTwitch, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import x from "../../public/images/x.jpg"
 const Footer = () => {
   return (
     <div className="footer">
@@ -28,7 +28,10 @@ const Footer = () => {
                 <div className="widget widget-do-etfw">
                     <h3 class="widgettitle">Follow Us on Twitter</h3>
                     <div className="twitter-timeline twitter-timeline-rendered">
-                        <iframe  src="https://syndication.twitter.com/srv/timeline-profile/screen-name/rad…e&theme=dark&transparent=true&widgetsVersion=2615f7e52b7e0%3A1702314776716">…</iframe>
+                        <div className="x-logo">
+                    <img src={x} alt="" />
+                        </div>
+                        <h2>Nothing to see here - </h2>
                     </div>
                 </div>
             </div>
@@ -38,10 +41,10 @@ const Footer = () => {
                     <ul>
                         <li>44 New Design Street, rne 005</li>
                         <li>
-                            <Link to="tel:01800433633"><FaPhone /></Link>
+                            <Link to="tel:01800433633"><FaPhone />01800433633</Link>
                         </li>
                         <li>
-                            <Link to="mailto:info@gymedge.com"><FaEnvelope /></Link>
+                            <Link to="mailto:info@gymedge.com"><FaEnvelope />info@gymedge.com</Link>
                         </li>
                         <li>
                             <Link><FaFax/> (123) 118 9999</Link>
