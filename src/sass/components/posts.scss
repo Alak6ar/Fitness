@@ -33,12 +33,12 @@
         display: block;
         cursor: pointer;
         &:hover img {
-            -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
         }
         img {
-            transition: .5s ease-in-out;
-            width: 100%;
+          transition: 0.5s ease-in-out;
+          width: 100%;
         }
       }
       .date {
@@ -52,25 +52,28 @@
         text-align: center;
         top: -15px;
         z-index: 9;
-    }
+      }
     }
     .single-item-content h3 {
-        margin: 30px 0 20px;
-        a {
-            color: #111111;
-            transition: all 0.3s ease 0s;
-            &:hover {
-                color: #fb5b21;
-            }
+      margin: 30px 0 20px;
+      a {
+        color: #111111;
+        transition: all 0.3s ease 0s;
+        &:hover {
+          color: #fb5b21;
         }
+      }
     }
-    p{
-        color: #666666;
-        font-size: 15px;
+    p {
+      color: #666666;
+      font-size: 15px;
     }
   }
-  .slick-slide{
-    width: 356px;
-    margin-right: 20px;
+  .slick-slider {
+    height: 500px !important;
+    .slick-slide {
+      width: 356px;
+      margin-right: 20px;
+    }
   }
 }

@@ -16,17 +16,17 @@ import img5 from "../../public/images/img5.jpg";
 import img6 from "../../public/images/img6.jpg";
 import Pricing from "../components/Pricing";
 import Posts from "../components/Posts";
+import Slider from "react-slick";
+import Footer from "../components/Footer";
 
 const Home = () => {
   useEffect(() => {
-    // h2 animasyonu
     gsap.from(".hero-caption h2", {
       x: -200,
       opacity: 0,
       duration: 1,
     });
 
-    // h5 animasyonu, h2'den 0.3 saniye sonra başlasın
     gsap.from(".hero-caption h5", {
       x: -200,
       opacity: 0,
@@ -34,7 +34,6 @@ const Home = () => {
       delay: 0.3,
     });
 
-    // a animasyonu, h5'ten 0.3 saniye sonra başlasın
     gsap.from(".hero-caption a", {
       x: -200,
       opacity: 0,
@@ -89,6 +88,40 @@ const Home = () => {
       ? galleryData
       : galleryData.filter((img) => img.category === selectedCategory);
 
+
+      const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        gap: 50,
+        autoplay: true, // Otomatik kaydırmayı etkinleştir
+  autoplaySpeed: 3000, // 3 saniyede bir kaydırma yapar
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            },
+          },
+          {
+            breakpoint: 768, 
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+          {
+            breakpoint: 480, 
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
+      };
   return (
     <div className="home-page">
       <div className="home">
@@ -287,13 +320,28 @@ const Home = () => {
         <div className="container">
           <div className="summer-center">
             <h1>FITNESS CLASSES THIS SUMMER.</h1>
-            <p>PAY NOW AND GET <span>35%</span> DISCOUNT</p>
+            <p>
+              PAY NOW AND GET <span>35%</span> DISCOUNT
+            </p>
             <Link>BECOME A MEMBER</Link>
           </div>
         </div>
       </div>
-      <Posts/>
+      <Posts />
+
+<div className="slider-img">
+  <div className="container">
+      <Slider {...settings}>
+        <div><div className="img-box"><img src="https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2017/01/3.jpg"  alt="" /></div></div>
+        <div><div className="img-box"><img src="https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2016/11/2.jpg"  alt="" /></div></div>
+        <div><div className="img-box"><img src="https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2017/01/6.jpg " alt="" /></div></div>
+        <div><div className="img-box"><img src="https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2017/01/4-1.jpg"alt="" /></div></div>
+        <div><div className="img-box"><img src="https://radiustheme.com/demo/wordpress/gymedge/wp-content/uploads/2017/01/1.jpg"  alt="" /></div></div>
+      </Slider>
+</div>
     </div>
+    <Footer/>
+  </div>
   );
 };
 
