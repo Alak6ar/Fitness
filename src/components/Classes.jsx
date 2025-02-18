@@ -53,10 +53,9 @@ const Classes = () => {
                 classItem.schedules.length > 0
                   ? classItem.schedules[0].trainerName
                   : "No Trainer Assigned";
-
               return (
                 <div key={classItem.id} className="single-item">
-                  <Link to={`/classes/${classItem.id}`} className="single-item-content">
+                  <p to={`/classes/${classItem.id}`} className="single-item-content">
                     <div className="clases-img">
                       <img
                         src={classItem.imageUrl?.startsWith("http") ? classItem.imageUrl : "path/to/default-image.jpg"}
@@ -80,15 +79,13 @@ const Classes = () => {
                         )}
                       </ul>
                     </div>
-                  </Link>
-                  <div className="single-item-meta">
-                    <h3>
-                      <Link to={`/classes/${classItem.id}`}>{classItem.name}</Link>
-                    </h3>
+                  </p>
+                  <Link className="single-item-meta" to={`/classes/${classItem.id}`}>
+                      <h3 >{classItem.name}</h3>
                     <span>
                       <FaUser /> {trainer}
                     </span>
-                  </div>
+                  </Link>
                 </div>
               );
             })

@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import axios from "axios";
 
 const Trainers = () => {
   const [trainers, setTrainers] = useState([]);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
         const response = await axios.get("http://alihuseyn1-001-site1.otempurl.com/api/Trainer", {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzNzMyN2M0LTIwNjUtNGQ2NS1iOTAzLWI0YjRkNDk4OWY3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzM5ODk1MTU4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUxNzkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MTc5LyJ9.ROcB7Hwl8a8looln7QHl2RHgDFHXwEXDQZmFCLxJa2o            `,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzNzMyN2M0LTIwNjUtNGQ2NS1iOTAzLWI0YjRkNDk4OWY3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzM5OTYzODk2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUxNzkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MTc5LyJ9.db72wSMcO6C8bzzi9N_ppUG6y3v_XB8XSYT-yGkM8Xw            `,
           },
         });
         setTrainers(response.data);
@@ -45,7 +46,7 @@ const Trainers = () => {
         </div>
         <Slider {...settings}>
           {trainers.map((trainer) => (
-            <div key={trainer.id}>
+            <div key={trainer.id}className="trainer-card">
               <div className="vc-item-wrap">
                 <div className="vc-item">
                   <div className="trainer-img">
@@ -53,22 +54,14 @@ const Trainers = () => {
                   </div>
                   <div className="vc-overly">
                     <ul>
-                      <li>
-                        <Link><FaFacebook /></Link>
-                      </li>
-                      <li>
-                        <Link><FaInstagram /></Link>
-                      </li>
-                      <li>
-                        <Link><FaYoutube/></Link>
-                      </li>
-                      <li>
-                        <Link><FaSnapchat/></Link>
-                      </li>
+                      <li><Link><FaFacebook /></Link></li>
+                      <li><Link><FaInstagram /></Link></li>
+                      <li><Link><FaYoutube /></Link></li>
+                      <li><Link><FaSnapchat /></Link></li>
                     </ul>
                   </div>
-                  <div className="vc-team-meta">
-                    <h3><Link>{trainer.firstName} {trainer.lastName}</Link></h3>
+                  <div className="vc-team-meta"  onClick={() => navigate(`/trainer/${trainer.id}`)} >
+                    <h3>{trainer.firstName} {trainer.lastName}</h3>
                     <div>{trainer.positionName}</div>
                   </div>
                 </div>

@@ -61,7 +61,6 @@ const Class = () => {
 
               <div className="class-desc">
                 <p>{classData.description}</p>
-
                 <div className="clas-schedule">
                   <h3>Program:</h3>
                   <ul>
