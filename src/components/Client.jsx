@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext"; 
 
 const Client = () => {
   const [clients, setClients] = useState([]);
-  const baseURL = "http://alihuseyn1-001-site1.otempurl.com/";
-  const apiURL = "http://alihuseyn1-001-site1.otempurl.com/api/Client";
+  const apiURL = "http://alihuseyn1-001-site1.otempurl.com/api/Client/";
+  const { token, login } = useAuth(); 
 
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzNzMyN2M0LTIwNjUtNGQ2NS1iOTAzLWI0YjRkNDk4OWY3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzM5ODk1MTU4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUxNzkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MTc5LyJ9.ROcB7Hwl8a8looln7QHl2RHgDFHXwEXDQZmFCLxJa2o  "
   useEffect(() => {
+    // console.log("Mevcut token:", token); 
     const fetchClients = async () => {
       try {
         const response = await axios.get(apiURL, {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         });
-
         setClients(response.data);
       } catch (error) {
-        console.error("Veri çekme hatası:", error.response ? error.response.data : error.message);
+        // console.error(
+        //   "API Hata:",
+        //   error.response ? error.response.data : error.message
+        // );
       }
     };
-
+  
     fetchClients();
-  }, []);
+  }, [token, login]);
+  
 
   const settings = {
     dots: false,
@@ -44,28 +49,27 @@ const Client = () => {
       <div className="container">
         <h1>WHAT CLIENT'S SAY</h1>
         <Slider {...settings}>
-  {clients.map((client) => (
-    <div key={client.userId || client.id}> {/* Burada userId veya id kullanabilirsiniz */}
-      <div className="rt-vc-item media">
-        <div className="pull-left rt-vc-img">
-          <img src={client.imageUrl} alt="" />
-        </div>
-        <div className="media-body rt-vc-content">
-          <h3>
-            {client.firstName} {client.lastName}
-            <span className="rating">
-              {Array.from({ length: client.rating }).map((_, i) => (
-                <span key={i}>⭐</span>
-              ))}
-            </span>
-          </h3>
-          <p>{client.description}</p>
-        </div>
-      </div>
-    </div>
-  ))}
-</Slider>
-
+          {clients.map((client) => (
+            <div key={client.userId || client.id}>
+              <div className="rt-vc-item media">
+                <div className="pull-left rt-vc-img">
+                  <img src={client.imageUrl} alt="" />
+                </div>
+                <div className="media-body rt-vc-content">
+                  <h3>
+                    {client.firstName} {client.lastName}
+                    <span className="rating">
+                      {Array.from({ length: client.rating }).map((_, i) => (
+                        <span key={i}>⭐</span>
+                      ))}
+                    </span>
+                  </h3>
+                  <p>{client.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

@@ -68,7 +68,7 @@ const Classes = () => {
                   : "No Trainer Assigned";
               return (
                 <div key={classItem.id} className="single-item">
-                  <p className="single-item-content">
+                  <div className="single-item-content">
                     <div className="clases-img">
                       <img
                         src={classItem.imageUrl?.startsWith("http") ? classItem.imageUrl : "path/to/default-image.jpg"}
@@ -92,7 +92,7 @@ const Classes = () => {
                         )}
                       </ul>
                     </div>
-                  </p>
+                  </div>
                   <Link className="single-item-meta" to={`/classes/${classItem.id}`}>
                     <h3>{classItem.name}</h3>
                     <span>

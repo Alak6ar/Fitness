@@ -3,17 +3,19 @@ import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext"; // AuthContext'i içe aktar
 
 const Trainers = () => {
   const [trainers, setTrainers] = useState([]);
   const navigate = useNavigate();
+  const { token } = useAuth(); // AuthContext'ten token'ı al
 
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
         const response = await axios.get("http://alihuseyn1-001-site1.otempurl.com/api/Trainer", {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzNzMyN2M0LTIwNjUtNGQ2NS1iOTAzLWI0YjRkNDk4OWY3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzM5OTYzODk2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUxNzkvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MTc5LyJ9.db72wSMcO6C8bzzi9N_ppUG6y3v_XB8XSYT-yGkM8Xw            `,
+            Authorization: `Bearer ${token}`, // Token'ı dinamik olarak ekle
           },
         });
         setTrainers(response.data);
@@ -21,8 +23,11 @@ const Trainers = () => {
         console.error("Eğitmen verileri alınamadı:", error);
       }
     };
-    fetchTrainers();
-  }, []);
+
+    if (token) { // Token varsa isteği yap
+      fetchTrainers();
+    }
+  }, [token]); // Token değişirse yeniden çağır
 
   const settings = {
     dots: false,
@@ -46,7 +51,7 @@ const Trainers = () => {
         </div>
         <Slider {...settings}>
           {trainers.map((trainer) => (
-            <div key={trainer.id}className="trainer-card">
+            <div key={trainer.id} className="trainer-card">
               <div className="vc-item-wrap">
                 <div className="vc-item">
                   <div className="trainer-img">
@@ -60,7 +65,7 @@ const Trainers = () => {
                       <li><Link><FaSnapchat /></Link></li>
                     </ul>
                   </div>
-                  <div className="vc-team-meta"  onClick={() => navigate(`/trainer/${trainer.id}`)} >
+                  <div className="vc-team-meta" onClick={() => navigate(`/trainer/${trainer.id}`)}>
                     <h3>{trainer.firstName} {trainer.lastName}</h3>
                     <div>{trainer.positionName}</div>
                   </div>

@@ -33,7 +33,7 @@ const Posts = () => {
                     alt=""
                   />
                 </Link>
-              <div class="date">
+              <div className="date">
                 5 <br /> Jun <br /> 2019
               </div>
               </div>
@@ -52,7 +52,7 @@ const Posts = () => {
                     alt=""
                   />
                 </Link>
-              <div class="date">
+              <div className="date">
                 5 <br /> Jun <br /> 2019
               </div>
               </div>
@@ -71,7 +71,7 @@ const Posts = () => {
                     alt=""
                   />
                 </Link>
-              <div class="date">
+              <div className="date">
                 5 <br /> Jun <br /> 2019
               </div>
               </div>
@@ -90,7 +90,7 @@ const Posts = () => {
                     alt=""
                   />
                 </Link>
-              <div class="date">
+              <div className="date">
                 5 <br /> Jun <br /> 2019
               </div>
               </div>

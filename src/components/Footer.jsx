@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-flex">
             <div className="footer-card">
                 <div className="widget widget_gymedge_about">
-                    <h3 class="widgettitle">About Company</h3>
+                    <h3 className="widgettitle">About Company</h3>
                     <p>Praesent vel rutrum purus. Nam vel dui eu risus duis dignissim dignissim. Suspen disse at eros tempus, congueconsequat.Fusce sit amet urna feugiat.Praesent vel rutrum purus. Nam vel dui eu risus.</p>
                     <div className="footer-social-media-area">
                         <ul>
@@ -26,7 +26,7 @@ const Footer = () => {
             </div>
             <div className="footer-card">
                 <div className="widget widget-do-etfw">
-                    <h3 class="widgettitle">Follow Us on Twitter</h3>
+                    <h3 className="widgettitle">Follow Us on Twitter</h3>
                     <div className="twitter-timeline twitter-timeline-rendered">
                         <div className="x-logo">
                     <img src={x} alt="" />
@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
             <div className="footer-card">
                 <div className="widget widget_gymedge_address">
-                    <h3 class="widgettitle">Corporate Office</h3>
+                    <h3 className="widgettitle">Corporate Office</h3>
                     <ul>
                         <li>44 New Design Street, rne 005</li>
                         <li>

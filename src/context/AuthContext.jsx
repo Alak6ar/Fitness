@@ -4,13 +4,13 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const LOGIN_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Auth/Login";
+const REFRESH_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Auth/Refresh";  // Refresh token için endpoint
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Kullanıcı adı ve şifreyi burada tanımlıyoruz
   const username = "admin";
   const password = "Admin_123";
 
@@ -20,17 +20,61 @@ export const AuthProvider = ({ children }) => {
         usernameOrEmail: username,
         password: password,
       });
-      const newToken = response.data.token;
+      const { token: newToken, refreshToken } = response.data;
       setToken(newToken);
       setError(null);
-      localStorage.setItem("token", newToken); // Token'ı saklıyoruz
+      localStorage.setItem("token", newToken);
+      localStorage.setItem("refresh_token", refreshToken); // Refresh token'ı da saklıyoruz
     } catch (err) {
-      console.error("Login failed:", err);
       setError("Giriş başarısız.");
     } finally {
       setLoading(false);
     }
   };
+
+  // Refresh token ile yeni access token almak
+  const refreshToken = async () => {
+    const savedRefreshToken = localStorage.getItem("refresh_token");
+    if (!savedRefreshToken) {
+      setError("Yeniden giriş yapmanız gerekiyor.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(REFRESH_URL, { refreshToken: savedRefreshToken });
+      const newToken = response.data.token;
+      setToken(newToken);
+      localStorage.setItem("token", newToken);
+      setError(null);
+    } catch (err) {
+      setError("Token yenileme işlemi başarısız.");
+    }
+  };
+
+  // Axios interceptor kullanarak token'ı kontrol et ve yenile
+  useEffect(() => {
+    axios.interceptors.request.use(
+      (config) => {
+        if (token) {
+          config.headers["Authorization"] = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
+
+    axios.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        if (error.response && error.response.status === 401) {
+          // 401 hatası alındığında refresh token ile yeni access token al
+          await refreshToken();
+          return axios(error.config); // Yeni token ile tekrar dene
+        }
+        return Promise.reject(error);
+      }
+    );
+  }, [token]);
 
   useEffect(() => {
     const savedToken = localStorage.getItem("token");

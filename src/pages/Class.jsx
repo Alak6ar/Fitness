@@ -4,20 +4,20 @@ import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { FaSearch } from "react-icons/fa";
-import { useAuth } from "../context/AuthContext"; // useAuth kullanıyoruz
+import { useAuth } from "../context/AuthContext"; 
 
 const BASE_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Classes";
 
 const Class = () => {
   const { id } = useParams();
-  const { token, login, error, username, password } = useAuth(); // useAuth'ten değerleri alıyoruz
+  const { token, login, error, username, password } = useAuth(); 
   const [classData, setClassData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchClass = async () => {
       if (!token) {
-        await login(); // Eğer token yoksa giriş yap
+        await login();
       } else {
         try {
           const response = await axios.get(`${BASE_URL}/${id}`, {
