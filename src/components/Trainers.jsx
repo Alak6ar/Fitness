@@ -13,11 +13,7 @@ const Trainers = () => {
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
-        const response = await axios.get("http://alihuseyn1-001-site1.otempurl.com/api/Trainer", {
-          headers: {
-            Authorization: `Bearer ${token}`, // Token'ı dinamik olarak ekle
-          },
-        });
+        const response = await axios.get("http://alihuseyn1-001-site1.otempurl.com/api/Trainer");
         setTrainers(response.data);
       } catch (error) {
         console.error("Eğitmen verileri alınamadı:", error);

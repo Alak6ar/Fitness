@@ -14,7 +14,6 @@ const Client = () => {
       try {
         const response = await axios.get(apiURL, {
           headers: {
-            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });

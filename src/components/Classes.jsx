@@ -24,11 +24,7 @@ const Classes = () => {
         const newToken = loginResponse.data.token;
         setToken(newToken);
 
-        const classesResponse = await axios.get(CLASSES_URL, {
-          headers: {
-            Authorization: `Bearer ${newToken}`,
-          },
-        });
+        const classesResponse = await axios.get(CLASSES_URL);
 
         setClasses(classesResponse.data);
       } catch (error) {
