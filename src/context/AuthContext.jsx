@@ -4,8 +4,7 @@ import axios from "axios";
 const AuthContext = createContext();
 
 const LOGIN_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Auth/Login";
-const REFRESH_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Auth/Refresh";  // Refresh token için endpoint
-
+const REFRESH_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Auth/Refresh";  
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [error, setError] = useState(null);
@@ -24,7 +23,7 @@ export const AuthProvider = ({ children }) => {
       setToken(newToken);
       setError(null);
       localStorage.setItem("token", newToken);
-      localStorage.setItem("refresh_token", refreshToken); // Refresh token'ı da saklıyoruz
+      localStorage.setItem("refresh_token", refreshToken);
     } catch (err) {
       setError("Giriş başarısız.");
     } finally {
@@ -32,7 +31,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Refresh token ile yeni access token almak
   const refreshToken = async () => {
     const savedRefreshToken = localStorage.getItem("refresh_token");
     if (!savedRefreshToken) {

@@ -3,14 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { FaSearch } from "react-icons/fa";
-import { useAuth } from "../context/AuthContext"; 
+import { FaClock, FaSearch, FaUser } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
+import { FaPerson } from "react-icons/fa6";
 
 const BASE_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Classes";
 
 const Class = () => {
   const { id } = useParams();
-  const { token, login, error, username, password } = useAuth(); 
+  const { token, login, error, username, password } = useAuth();
   const [classData, setClassData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -64,18 +65,30 @@ const Class = () => {
               <div className="class-desc">
                 <p>{classData.description}</p>
                 <div className="clas-schedule">
-                  <h3>Program:</h3>
-                  <ul>
-                    {classData.schedules && classData.schedules.length > 0 ? (
-                      classData.schedules.map((schedule, index) => (
-                        <li key={index}>
-                          <strong>{schedule.dayOfWeek}</strong> - {schedule.startTime}
-                        </li>
-                      ))
-                    ) : (
-                      <p>Program bulunmuyor</p>
-                    )}
-                  </ul>
+                  <h3>Schedule:</h3>
+                  <div className="time">
+                    <ul>
+                      {classData.schedules && classData.schedules.length > 0 ? (
+                        classData.schedules.map((schedule, index) => (
+
+                          <li key={index}>
+                            <FaClock/>Class time : 
+                             <span> { schedule.dayOfWeek}</span> -{" "}
+                            {schedule.startTime}am
+                          </li>
+                        ))
+                      ) : (
+                        <p>Program bulunmuyor</p>
+                      )}
+                    </ul>
+
+                    <div className="sche-trainer">
+                      <ul>
+                        <li><FaUser/> Trainer:  Selina Stuart</li>
+                        <li><FaUser/> Trainer:  Jenifer Alex</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
