@@ -52,8 +52,16 @@ const Class = () => {
       "Friday",
       "Saturday",
     ];
-    return days[dayOfWeek] || "Bilinmeyen Gün"; // Geçersiz değer gelirse önlem al
+    return days[dayOfWeek] || "Bilinmeyen Gün"; 
   };
+  const uniqueSchedules = [
+    ...new Map(
+      classData.schedules.map((schedule) => [
+        `${schedule.trainerName}-${schedule.startTime}-${schedule.endTime}`, // Benzersiz anahtar oluştur
+        schedule,  
+      ])
+    ).values(),
+  ];
 
   return (
     <div className="class-page">
@@ -78,11 +86,11 @@ const Class = () => {
               <div className="class-desc">
                 <p>{classData.description}</p>
                 <div className="clas-schedule">
-                  <h3>Schedule:</h3>
+                      <h3>Schedule:</h3>
                   <div className="time">
                     <ul>
                       {classData.schedules && classData.schedules.length > 0 ? (
-                        classData.schedules.map((schedule, index) => (
+                        uniqueSchedules.map((schedule, index) => (
                           <li key={index}>
                             <FaClock /> Class time:
                             <span> {getDayName(schedule.dayOfWeek)}</span>{" "}
@@ -95,12 +103,14 @@ const Class = () => {
                         <p>Program bulunmuyor</p>
                       )}
                     </ul>
-
                     <div className="sche-trainer">
                       <ul>
-                        <li>
-                          <FaUser /> Trainer: <span>Selina Stuart</span>
-                        </li>
+                        {uniqueSchedules.map((schedule, index) => (
+                          <li key={index}>
+                            <FaUser /> Trainer:{" "}
+                            <span>{schedule.trainerName}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>

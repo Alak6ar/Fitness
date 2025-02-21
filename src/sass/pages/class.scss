@@ -51,8 +51,8 @@
           column-gap: 70px;
           @media (max-width: 991px) {
             flex-direction: column;
-            
           }
+       
           svg {
             color: #fb5b21;
             margin-right: 10px;
@@ -73,6 +73,9 @@
         .sche-trainer {
           span {
             color: #fb5b21;
+          }   
+          li{
+            margin-top: 6px;
           }
         }
       }

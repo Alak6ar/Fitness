@@ -40,8 +40,8 @@ const Schedule = () => {
                       {days.map((day, index) => (
                         <td key={index}>
                           {item.dayOfWeek === index + 1 && (
-                            <Link className="rt-item">
-                              <div className="rt-item-title">{item.className}</div>
+                          <Link className="rt-item" to={`classes/${item.id}`}>
+                          <div className="rt-item-title">{item.className}</div>
                               <div className="rt-item-trainer">
                               </div>
                               <div className="rt-item-time">
