@@ -18,6 +18,7 @@ import Pricing from "../components/Pricing";
 import Posts from "../components/Posts";
 import Slider from "react-slick";
 import Footer from "../components/Footer";
+import Schedule from "../components/Schedule";
 
 const Home = () => {
   useEffect(() => {
@@ -185,6 +186,7 @@ const Home = () => {
         </div>
       </div>
       <Classes />
+      <Schedule/>
       <Client />
       <Trainers />
 

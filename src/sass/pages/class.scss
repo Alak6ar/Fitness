@@ -49,6 +49,10 @@
           margin-top: 20px;
           display: flex;
           column-gap: 70px;
+          @media (max-width: 991px) {
+            flex-direction: column;
+            
+          }
           svg {
             color: #fb5b21;
             margin-right: 10px;
@@ -58,13 +62,18 @@
             display: flex;
             align-items: center;
             font-size: 15px;
-            span{
+            span {
+              margin-left: 5px;
+            }
+            p {
               margin-left: 5px;
             }
           }
         }
-        .sche-trainer{
-          
+        .sche-trainer {
+          span {
+            color: #fb5b21;
+          }
         }
       }
     }

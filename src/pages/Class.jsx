@@ -42,6 +42,19 @@ const Class = () => {
   if (error) return <p>{error}</p>;
   if (!classData) return <p>Ders bulunamadı</p>;
 
+  const getDayName = (dayOfWeek) => {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    return days[dayOfWeek] || "Bilinmeyen Gün"; // Geçersiz değer gelirse önlem al
+  };
+
   return (
     <div className="class-page">
       <div className="container">
@@ -70,11 +83,12 @@ const Class = () => {
                     <ul>
                       {classData.schedules && classData.schedules.length > 0 ? (
                         classData.schedules.map((schedule, index) => (
-
                           <li key={index}>
-                            <FaClock/>Class time : 
-                             <span> { schedule.dayOfWeek}</span> -{" "}
-                            {schedule.startTime}am
+                            <FaClock /> Class time:
+                            <span> {getDayName(schedule.dayOfWeek)}</span>{" "}
+                            <p>
+                              {schedule.startTime}am - {schedule.endTime}pm
+                            </p>
                           </li>
                         ))
                       ) : (
@@ -84,8 +98,9 @@ const Class = () => {
 
                     <div className="sche-trainer">
                       <ul>
-                        <li><FaUser/> Trainer:  Selina Stuart</li>
-                        <li><FaUser/> Trainer:  Jenifer Alex</li>
+                        <li>
+                          <FaUser /> Trainer: <span>Selina Stuart</span>
+                        </li>
                       </ul>
                     </div>
                   </div>
