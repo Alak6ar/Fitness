@@ -9,13 +9,20 @@ import ForgetPassword from "../components/auth/ForgetPassword";
 import ResetPassword from "../components/auth/ResetPassword";
 import SubmitRegistration from "../components/auth/SubmitRegistration";
 import ShoppingCart from "../components/ShoppingCart";
+import { Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
+import Class from "../pages/Class";
+import Trainer from "../pages/Trainer";
 
+import { AuthProvider } from "../context/AuthContext";
 const AppRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="shopping-cart" element={<ShoppingCart />} />
+          <Route path="/classes/:id" element={<Class />} />
+          <Route path="/trainer/:id" element={<Trainer />} />
         </Route>
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
