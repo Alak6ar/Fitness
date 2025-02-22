@@ -48,6 +48,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
       <div className="all-about">
         <div className="">
           <div className="all-flex">
@@ -94,7 +95,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Classes/>
+      {/* <Classes/> */}
     </div>
   );
 };
