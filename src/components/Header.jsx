@@ -110,7 +110,9 @@ const Header = () => {
               <IoSearchSharp />
             </div>
             <div className="basket">
+              <Link to='shopping-cart'>
               <SlBasket />
+              </Link>
             </div>
           </div>
           <div className="hamburger-menu">
