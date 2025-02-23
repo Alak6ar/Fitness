@@ -48,6 +48,16 @@ const Classes = () => {
     ],
   };
 
+  // Günlerin dizisini tanımlayalım
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   return (
     <div className="clases">
       <div className="container">
@@ -75,14 +85,20 @@ const Classes = () => {
                     <div className="overly">
                       <ul>
                         {classItem.schedules.length > 0 ? (
-                          classItem.schedules.map((schedule, index) => (
-                            <li key={index}>
-                              <ul className="class-slider-ul-child">
-                                <li>{`Gün: ${schedule.dayOfWeek}`}</li>
-                                <li>{`${schedule.startTime}`}</li>
-                              </ul>
-                            </li>
-                          ))
+                          // 1. Adım: Gelen günleri sıralıyoruz
+                          classItem.schedules
+                            .sort((a, b) => a.dayOfWeek - b.dayOfWeek) // Sıralama işlemi
+                            .map((schedule, index) => {
+                              const dayName = dayNames[schedule.dayOfWeek - 1]; // Gün numarasını gün adına çevir
+                              return (
+                                <li key={index}>
+                                  <ul className="class-slider-ul-child">
+                                    <li>{`${dayName}`}</li>
+                                    <li>{`${schedule.startTime}`}</li>
+                                  </ul>
+                                </li>
+                              );
+                            })
                         ) : (
                           <li>Program bulunmuyor</li>
                         )}

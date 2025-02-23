@@ -6,11 +6,11 @@ margin-bottom: 50px;  }
   .clas-up {
     display: flex;
     gap: 20px;
-    h3 {
+    h1 {
       margin-bottom: 50px !important;
       color: #111111;
       float: left;
-      font-size: 30px;
+      font-size: 30px ;
       font-weight: 600;
       @media (max-width: 991px) {
         font-size: 25px;
@@ -114,6 +114,7 @@ margin-bottom: 50px;  }
       }
       span {
         color: #111111;
+        display: flex;
       }
     }
   }

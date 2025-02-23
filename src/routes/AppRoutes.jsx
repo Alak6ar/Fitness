@@ -17,25 +17,25 @@ import { AuthProvider } from "../context/AuthContext";
 const AppRoutes = () => {
   return (
     <AuthProvider>
-      <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="/classes/:id" element={<Class />} />
-          <Route path="/trainer/:id" element={<Trainer />} />
-        </Route>
-        <Route path="shopping-cart" element={<ShoppingCart />} />
-
-        <Route path="auth" element={<Auth />}>
-          <Route path="login" element={<Login />} />
-          <Route path="sign-up" element={<Register />} />
-          <Route path="verifyEmail" element={<VerifyEmail />} />
-          <Route path="forget-Password" element={<ForgetPassword />} />
-          <Route path="submit-registration?*" element={<SubmitRegistration />} />
-          <Route path="reset-password?*" element={<ResetPassword />} />
-        </Route>
-
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/classes/:id" element={<Class />} />
+      <Route path="/trainer/:id" element={<Trainer />} />
+      <Route path="/shopping-cart" element={<ShoppingCart />} />
+  
+      <Route path="/auth" element={<Auth />}>
+        <Route path="login" element={<Login />} />
+        <Route path="sign-up" element={<Register />} />
+        <Route path="verifyEmail" element={<VerifyEmail />} />
+        <Route path="forget-Password" element={<ForgetPassword />} />
+        <Route path="submit-registration" element={<SubmitRegistration />} />
+        <Route path="reset-password" element={<ResetPassword />} />
+      </Route>
+  
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  </AuthProvider>
+  
   );
 };
 
