@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { FaClock, FaSearch, FaUser } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
 import { FaPerson } from "react-icons/fa6";
+import Loading from "../components/Loading";
 
 const BASE_URL = "http://alihuseyn1-001-site1.otempurl.com/api/Classes";
 
@@ -38,7 +39,7 @@ const Class = () => {
     fetchClass();
   }, [id, token, login]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>{error}</p>;
   if (!classData) return <p>Ders bulunamadı</p>;
 

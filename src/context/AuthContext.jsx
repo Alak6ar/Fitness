@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", newToken);
       localStorage.setItem("refresh_token", refreshToken);
     } catch (err) {
-      setError("Giriş başarısız.");
+      setError("");
     } finally {
       setLoading(false);
     }
